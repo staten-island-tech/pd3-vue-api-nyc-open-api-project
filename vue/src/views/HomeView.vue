@@ -1,18 +1,12 @@
 <script setup>
+// import TheWelcome from "../components/TheWelcome.vue";
 import { ref, onMounted } from "vue";
 const covidData = ref("");
-// import TheWelcome from "../components/TheWelcome.vue";
-
 async function api() {
   let response = await fetch(
     "https://data.cityofnewyork.us/resource/rc75-m7u3.json"
   );
-  let data = await response.json();
-  covidData.value = data.death_count;
-  console.log(covidData);
-  // console.log(data.data.death_count[0]);
-  // this.users = users;
-  // console.log(this.users[0]);
+  covidData.value = await response.json();
 }
 onMounted(() => {
   api();
@@ -20,10 +14,25 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- <main>
-    <TheWelcome />
-  </main> -->
-  <div></div>
+  <main>
+    <div class="death-data">
+      <div class="single-data" v-for="data in covidData" :key="data">
+        <h2>{{ data.date_of_interest }}</h2>
+        <h3>{{ data.case_count }} cases</h3>
+        <h3>{{ data.bk_case_count }} brooklyn cases</h3>
+      </div>
+    </div>
+  </main>
 </template>
 
-<style></style>
+<style scoped>
+.death-data {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.single-data {
+  width: 20%;
+}
+</style>
