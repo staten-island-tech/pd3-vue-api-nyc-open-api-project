@@ -1,20 +1,41 @@
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
+<script>
+import Chart from 'chart.js/auto'
+
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: String
+  },
+  mounted() {
+    console.log('Component Mounted')
+    const ctx = document.getElementById('myChart')
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [
+          {
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    })
   }
-})
+}
 </script>
 
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
+  <div>
+    <canvas id="myChart"></canvas>
   </div>
 </template>
 
