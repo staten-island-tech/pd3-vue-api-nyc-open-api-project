@@ -1,19 +1,57 @@
-<script setup>
-import chart from "./src/acquisitions";
+<script>
+//import chart from "./src/acquisitions";
+import Chart from "chart.js/auto";
+
+import { ref } from "vue";
+
+const covidData = ref("");
+async function api() {
+  let res = await fetch(
+    "https://data.cityofnewyork.us/resource/rc75-m7u3.json"
+  );
+  covidData.value = await res.json();
+  let data = covidData.value;
+  console.log(data);
+
+  return data;
+}
+/* onMounted(() => {
+  api();
+}); */
+
+export default {
+  name: "CovidCaseCount",
+  async mounted() {
+    let data = await api();
+    let a = data.map((e) => {
+      return e.date_of_interest;
+    });
+    let b = data.map((e) => {
+      return e.case_count;
+    });
+    console.log(a);
+    console.log(b);
+
+    new Chart(document.getElementById("acquisitions"), {
+      type: "line",
+      data: {
+        labels: a,
+        datasets: [
+          {
+            label: "Covid Case Count",
+            data: b,
+          },
+        ],
+      },
+    });
+  },
+};
 </script>
 
 <template>
-  <!-- <div class="case-data">
-    <div class="single-data" v-for="data in covidData" :key="data">
-      <h2>{{ data.date_of_interest }}</h2>
-      <h3>{{ data.case_count }} cases</h3>
-      <h3>{{ data.bk_case_count }} brooklyn cases</h3>
-    </div>
-  </div> -->
-
-  <chart />
-
-  <!-- <div>{{ api }}</div> -->
+  <div>
+    <canvas id="acquisitions"></canvas>
+  </div>
 </template>
 
 <style scoped>

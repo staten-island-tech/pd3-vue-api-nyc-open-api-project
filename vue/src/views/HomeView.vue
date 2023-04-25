@@ -1,10 +1,10 @@
 <script setup>
-import CovidData from "../components/CovidData.vue";
+import CovidCaseCount from "../components/CovidData.vue";
 </script>
 
 <template>
   <main>
-    <CovidData />
+    <CovidCaseCount />
   </main>
 </template>
 
