@@ -1,5 +1,4 @@
 <script>
-//import chart from "./src/acquisitions";
 import Chart from "chart.js/auto";
 
 import { ref } from "vue";
@@ -15,9 +14,6 @@ async function api() {
 
   return data;
 }
-/* onMounted(() => {
-  api();
-}); */
 
 export default {
   name: "CovidCaseCount",
@@ -54,14 +50,4 @@ export default {
   </div>
 </template>
 
-<style scoped>
-/* .case-data {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
-.single-data {
-  width: 20%;
-} */
-</style>
+<style scoped></style>
