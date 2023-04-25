@@ -5,52 +5,73 @@ const covidData = ref('')
 async function covidAPI() {
   let response = await fetch('https://data.cityofnewyork.us/resource/rc75-m7u3.json')
   covidData.value = await response.json()
+  return covidData.value
 }
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
 
-  mounted() {
-    covidAPI()
-    console.log(covidData)
-    const date = [1, 2, 3, 4, 5]
-    console.log(
-      'Component Mounted',
-      date.forEach((el) => {
-        console.log(el)
-      })
-    )
+  async mounted() {
+    let covidData = await covidAPI()
+
+    let covidDate = covidData.map((el) => {
+      return el.date_of_interest
+    })
+    console.log(covidDate)
+    let BronxDeath = covidData.map((el) => {
+      return el.bx_death_count
+    })
+    console.log(covidDate)
+    let BrooklynDeath = covidData.map((el) => {
+      return el.bk_death_count
+    })
+    console.log(covidDate)
+    let ManhattanDeath = covidData.map((el) => {
+      return el.mn_death_count
+    })
+    console.log(covidDate)
+    let QueensDeath = covidData.map((el) => {
+      return el.qn_death_count
+    })
+    console.log(covidDate)
+    let StatenIslandDeath = covidData.map((el) => {
+      return el.si_death_count
+    })
+    console.log(covidDate)
+
+    console.log('Component Mounted')
     const ctx = document.getElementById('myChart')
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: date,
+        labels: covidDate,
         datasets: [
           {
             label: 'Bronx',
-            data: [12, 19, 3, 5, 2, 3],
+            data: BronxDeath,
             borderWidth: 1
           },
           {
             label: 'Brooklyn',
-            data: [12, 19, 3, 5, 2, 20],
+            data: BrooklynDeath,
             borderWidth: 1
           },
           {
             label: 'Manhattan',
-            data: [12, 19, 3, 5, 2, 3],
+            data: ManhattanDeath,
             borderWidth: 1
           },
           {
             label: 'Queens',
-            data: [12, 19, 3, 5, 2, 3],
+            data: QueensDeath,
             borderWidth: 1
           },
           {
             label: 'Staten Island',
-            data: [12, 19, 3, 5, 2, 3],
+            data: StatenIslandDeath,
             borderWidth: 1
           }
         ]

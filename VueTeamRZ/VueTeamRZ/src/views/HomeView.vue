@@ -1,7 +1,7 @@
 <script setup>
 // import Chart from 'chart.js/auto'
 
-import { ref, onMounted } from 'vue'
+/* import { ref, onMounted } from 'vue'
 const covidData = ref('')
 async function covidAPI() {
   let response = await fetch('https://data.cityofnewyork.us/resource/rc75-m7u3.json')
@@ -11,7 +11,7 @@ async function covidAPI() {
 onMounted(() => {
   covidAPI()
   console.log('This good?')
-})
+}) */
 </script>
 
 <template>
