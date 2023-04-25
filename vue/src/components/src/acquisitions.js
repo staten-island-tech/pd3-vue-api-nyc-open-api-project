@@ -1,32 +1,31 @@
 import Chart from "chart.js/auto";
-import { ref, onMounted } from "vue";
 
-const covidData = ref("");
+// import { ref } from "vue";
+
+// const covidData = ref("");
 async function api() {
   let response = await fetch(
     "https://data.cityofnewyork.us/resource/rc75-m7u3.json"
   );
-  covidData.value = await response.json();
+  let data = await response.json();
+  console.log(data[0]);
 }
-onMounted(() => {
+api();
+/* onMounted(() => {
   api();
-});
+}); */
 
-const stuff = (async function () {
-  const data = { covidData };
-
+export default function chart(data) {
   new Chart(document.getElementById("acquisitions"), {
     type: "bar",
     data: {
-      labels: data.map((row) => row.year),
+      labels: data.products.map((e) => e.date_of_interest),
       datasets: [
         {
           label: "Acquisitions by year",
-          data: data.map((row) => row.count),
+          data: data.products.map((e) => e.case_count),
         },
       ],
     },
   });
-})();
-
-export { stuff };
+}

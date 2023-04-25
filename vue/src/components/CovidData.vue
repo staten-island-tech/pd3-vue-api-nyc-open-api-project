@@ -1,5 +1,5 @@
 <script setup>
-import { stuff } from "./src/acquisitions";
+import chart from "./src/acquisitions";
 </script>
 
 <template>
@@ -10,7 +10,10 @@ import { stuff } from "./src/acquisitions";
       <h3>{{ data.bk_case_count }} brooklyn cases</h3>
     </div>
   </div> -->
-  <div>{{ stuff }}</div>
+
+  <chart />
+
+  <!-- <div>{{ api }}</div> -->
 </template>
 
 <style scoped>
