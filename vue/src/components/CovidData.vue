@@ -11,7 +11,6 @@ async function api() {
   covidData.value = await res.json();
   let data = covidData.value;
   console.log(data);
-
   return data;
 }
 
@@ -28,8 +27,8 @@ export default {
     console.log(a);
     console.log(b);
 
-    new Chart(document.getElementById("acquisitions"), {
-      type: "line",
+    new Chart(document.getElementById("case-chart"), {
+      type: "bar",
       data: {
         labels: a,
         datasets: [
@@ -45,9 +44,7 @@ export default {
 </script>
 
 <template>
-  <div>
-    <canvas id="acquisitions"></canvas>
-  </div>
+  <canvas id="case-chart" style="width: 500vw; height: 350vh"></canvas>
 </template>
 
 <style scoped></style>
