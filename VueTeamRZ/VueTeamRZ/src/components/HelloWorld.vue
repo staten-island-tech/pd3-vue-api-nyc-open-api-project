@@ -16,15 +16,37 @@ export default {
 
   async mounted() {
     let covidData = await covidAPI()
-
+    let cat = []
     let covidDate = covidData
       .filter((el) => {
-        return el.date_of_interest.includes('2020-03')
+        let n = '2020-03'
+        return el.date_of_interest.includes(n)
       })
       .map((e) => {
-        return e.date_of_interest
+        return cat.push({ a: e.date_of_interest, b: e.bx_death_count })
       })
 
+    cat.forEach((el) => console.log(el.b))
+    console.log(cat.a)
+    let dog = covidData.filter((el) => {
+      return el.date_of_interest.includes('2020-03')
+    })
+    let a = []
+    dog.forEach((el) => {
+      a.push(parseInt(el.bx_death_count))
+    })
+    console.log(a)
+    let b = a.reduce((total, currentValue) => total + currentValue, 0)
+    console.log(b)
+    let covidNum = covidData
+      .filter((el) => {
+        let n = 21
+        return el.date_of_interest.includes('20${n}-03')
+      })
+      .map((e) => {
+        return e.bx_death_count.reduce((total, currentValue) => total + currentValue, 0)
+      })
+    console.log(covidNum)
     console.log(covidDate)
     let BronxDeath = covidData.map((el) => {
       return el.bx_death_count
@@ -123,8 +145,7 @@ h3 {
 }
 
 #myChart {
-  width: 80vw;
-  align-self: center;
+  width: 1500px;
 }
 @media (min-width: 1024px) {
   .greetings h1,
