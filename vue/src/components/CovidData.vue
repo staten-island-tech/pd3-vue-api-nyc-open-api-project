@@ -1,6 +1,5 @@
 <script>
 import Chart from "chart.js/auto";
-
 import { ref } from "vue";
 
 const covidData = ref("");
