@@ -17,30 +17,34 @@ export default {
   async mounted() {
     let covidData = await covidAPI()
 
-    let covidDate = covidData.map((el) => {
-      return el.date_of_interest
-    })
+    let covidDate = covidData
+      .filter((el) => {
+        return el.date_of_interest.includes('2020-03')
+      })
+      .map((e) => {
+        return e.date_of_interest
+      })
+
     console.log(covidDate)
     let BronxDeath = covidData.map((el) => {
       return el.bx_death_count
     })
-    console.log(covidDate)
+
     let BrooklynDeath = covidData.map((el) => {
       return el.bk_death_count
     })
-    console.log(covidDate)
+
     let ManhattanDeath = covidData.map((el) => {
       return el.mn_death_count
     })
-    console.log(covidDate)
+
     let QueensDeath = covidData.map((el) => {
       return el.qn_death_count
     })
-    console.log(covidDate)
+
     let StatenIslandDeath = covidData.map((el) => {
       return el.si_death_count
     })
-    console.log(covidDate)
 
     console.log('Component Mounted')
     const ctx = document.getElementById('myChart')
@@ -100,7 +104,6 @@ export default {
     <h1>{{ data.qn_death_count }} in Queens</h1>
     <h1>{{ data.si_death_count }} in Staten Island</h1>
   </div>
-  <h1>shjt</h1>
 </template>
 
 <style scoped>
@@ -120,7 +123,8 @@ h3 {
 }
 
 #myChart {
-  width: 800px;
+  width: 80vw;
+  align-self: center;
 }
 @media (min-width: 1024px) {
   .greetings h1,
