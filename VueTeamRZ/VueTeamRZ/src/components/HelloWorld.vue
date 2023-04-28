@@ -9,44 +9,55 @@ async function covidAPI() {
 }
 
 export default {
+  data() {
+    return {
+      text: this.value
+    }
+  },
   name: 'HelloWorld',
   props: {
     msg: String
   },
-
+  computed: {
+    chartData: function () {
+      return this.text
+    }
+  },
   async mounted() {
+    let n = this.chartData
+    console.log('dog', n)
     let covidData = await covidAPI()
     let cat = []
     let covidDate = covidData
       .filter((el) => {
-        let n = '2020-03'
+        console.log(n)
         return el.date_of_interest.includes(n)
       })
       .map((e) => {
         return cat.push({ a: e.date_of_interest, b: e.bx_death_count })
       })
 
-    cat.forEach((el) => console.log(el.b))
-    console.log(cat.a)
-    let dog = covidData.filter((el) => {
-      return el.date_of_interest.includes('2020-03')
-    })
-    let a = []
-    dog.forEach((el) => {
-      a.push(parseInt(el.bx_death_count))
-    })
-    console.log(a)
-    let b = a.reduce((total, currentValue) => total + currentValue, 0)
-    console.log(b)
-    let covidNum = covidData
-      .filter((el) => {
-        let n = 21
-        return el.date_of_interest.includes('20${n}-03')
-      })
-      .map((e) => {
-        return e.bx_death_count.reduce((total, currentValue) => total + currentValue, 0)
-      })
-    console.log(covidNum)
+    // cat.forEach((el) => console.log(el.b))
+    // console.log(cat.a)
+    // let dog = covidData.filter((el) => {
+    //   return el.date_of_interest.includes('2020-03')
+    // })
+    // let a = []
+    // dog.forEach((el) => {
+    //   a.push(parseInt(el.bx_death_count))
+    // })
+    // console.log(a)
+    // let b = a.reduce((total, currentValue) => total + currentValue, 0)
+    // console.log(b)
+    // let covidNum = covidData
+    //   .filter((el) => {
+    //     let n = 21
+    //     return el.date_of_interest.includes('20${n}-03')
+    //   })
+    //   .map((e) => {
+    //     return e.bx_death_count.reduce((total, currentValue) => total + currentValue, 0)
+    //   })
+    // console.log(covidNum)
     console.log(covidDate)
     let BronxDeath = covidData.map((el) => {
       return el.bx_death_count
@@ -102,6 +113,7 @@ export default {
           }
         ]
       },
+
       options: {
         scales: {
           y: {
@@ -116,6 +128,9 @@ export default {
 
 <template>
   <div>
+    <h1>pooab</h1>
+    <h1>{{ text }}</h1>
+    <input v-model="text" placeholder="YYYY/MM" />
     <canvas id="myChart"></canvas>
   </div>
   <div v-for="data in covidData" :key="data">
@@ -145,7 +160,7 @@ h3 {
 }
 
 #myChart {
-  width: 1500px;
+  height: 80vh;
 }
 @media (min-width: 1024px) {
   .greetings h1,
