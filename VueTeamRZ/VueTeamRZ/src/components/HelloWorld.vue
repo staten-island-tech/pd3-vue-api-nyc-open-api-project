@@ -23,20 +23,124 @@ export default {
       return this.text
     }
   },
+  methods: {
+    async onKeyDown(event) {
+      this.poop = this.text
+      console.log('You pressed the ' + event.key + ' key.')
+      console.log(this.text)
+      let n = this.poop
+      console.log('dog', n)
+      let covidData = await covidAPI()
+      let cat = []
+      let covidDate = covidData
+        .filter((el) => {
+          return el.date_of_interest.includes(n)
+        })
+        .map((e) => {
+          return cat.push({ a: e.date_of_interest, b: e.bx_death_count })
+        })
+      console.log(cat)
+      console.log(cat.b)
+      // cat.forEach((el) => console.log(el.b))
+      // console.log(cat.a)
+      // let dog = covidData.filter((el) => {
+      //   return el.date_of_interest.includes('2020-03')
+      // })
+      // let a = []
+      // dog.forEach((el) => {
+      //   a.push(parseInt(el.bx_death_count))
+      // })
+      // console.log(a)
+      // let b = a.reduce((total, currentValue) => total + currentValue, 0)
+      // console.log(b)
+      // let covidNum = covidData
+      //   .filter((el) => {
+      //     let n = 21
+      //     return el.date_of_interest.includes('20${n}-03')
+      //   })
+      //   .map((e) => {
+      //     return e.bx_death_count.reduce((total, currentValue) => total + currentValue, 0)
+      //   })
+      // console.log(covidNum)
+      console.log(covidDate)
+      let BronxDeath = covidData.map((el) => {
+        return el.bx_death_count
+      })
+
+      let BrooklynDeath = covidData.map((el) => {
+        return el.bk_death_count
+      })
+
+      let ManhattanDeath = covidData.map((el) => {
+        return el.mn_death_count
+      })
+
+      let QueensDeath = covidData.map((el) => {
+        return el.qn_death_count
+      })
+
+      let StatenIslandDeath = covidData.map((el) => {
+        return el.si_death_count
+      })
+
+      console.log('Component Mounted', cat.a)
+      const ctx = document.getElementById('myChart')
+      Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: 2,
+          datasets: [
+            {
+              label: 'Bronx',
+              data: BronxDeath,
+              borderWidth: 1
+            },
+            {
+              label: 'Brooklyn',
+              data: BrooklynDeath,
+              borderWidth: 1
+            },
+            {
+              label: 'Manhattan',
+              data: ManhattanDeath,
+              borderWidth: 1
+            },
+            {
+              label: 'Queens',
+              data: QueensDeath,
+              borderWidth: 1
+            },
+            {
+              label: 'Staten Island',
+              data: StatenIslandDeath,
+              borderWidth: 1
+            }
+          ]
+        },
+
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      })
+    }
+  },
+
   async mounted() {
-    let n = this.chartData
+    let n = this.poop
     console.log('dog', n)
     let covidData = await covidAPI()
     let cat = []
     let covidDate = covidData
       .filter((el) => {
-        console.log(n)
-        return el.date_of_interest.includes(n)
+        return el.date_of_interest.includes('2022-03')
       })
       .map((e) => {
         return cat.push({ a: e.date_of_interest, b: e.bx_death_count })
       })
-
     // cat.forEach((el) => console.log(el.b))
     // console.log(cat.a)
     // let dog = covidData.filter((el) => {
@@ -59,69 +163,63 @@ export default {
     //   })
     // console.log(covidNum)
     console.log(covidDate)
-    let BronxDeath = covidData.map((el) => {
-      return el.bx_death_count
-    })
-
-    let BrooklynDeath = covidData.map((el) => {
-      return el.bk_death_count
-    })
-
-    let ManhattanDeath = covidData.map((el) => {
-      return el.mn_death_count
-    })
-
-    let QueensDeath = covidData.map((el) => {
-      return el.qn_death_count
-    })
-
-    let StatenIslandDeath = covidData.map((el) => {
-      return el.si_death_count
-    })
-
+    // let BronxDeath = covidData.map((el) => {
+    //   return el.bx_death_count
+    // })
+    // let BrooklynDeath = covidData.map((el) => {
+    //   return el.bk_death_count
+    // })
+    // let ManhattanDeath = covidData.map((el) => {
+    //   return el.mn_death_count
+    // })
+    // let QueensDeath = covidData.map((el) => {
+    //   return el.qn_death_count
+    // })
+    // let StatenIslandDeath = covidData.map((el) => {
+    //   return el.si_death_count
+    // })
     console.log('Component Mounted')
     const ctx = document.getElementById('myChart')
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: covidDate,
-        datasets: [
-          {
-            label: 'Bronx',
-            data: BronxDeath,
-            borderWidth: 1
-          },
-          {
-            label: 'Brooklyn',
-            data: BrooklynDeath,
-            borderWidth: 1
-          },
-          {
-            label: 'Manhattan',
-            data: ManhattanDeath,
-            borderWidth: 1
-          },
-          {
-            label: 'Queens',
-            data: QueensDeath,
-            borderWidth: 1
-          },
-          {
-            label: 'Staten Island',
-            data: StatenIslandDeath,
-            borderWidth: 1
-          }
-        ]
-      },
-
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    })
+    // new Chart(ctx, {
+    // type: 'line',
+    // data: {
+    //   labels: covidDate,
+    //   datasets: [
+    //     {
+    //       label: 'Bronx',
+    //       data: BronxDeath,
+    //       borderWidth: 1
+    //     },
+    //     {
+    //       label: 'Brooklyn',
+    //       data: BrooklynDeath,
+    //       borderWidth: 1
+    //     },
+    //     {
+    //       label: 'Manhattan',
+    //       data: ManhattanDeath,
+    //       borderWidth: 1
+    //     },
+    //     {
+    //       label: 'Queens',
+    //       data: QueensDeath,
+    //       borderWidth: 1
+    //     },
+    //     {
+    //       label: 'Staten Island',
+    //       data: StatenIslandDeath,
+    //       borderWidth: 1
+    //     }
+    //   ]
+    // },
+    // options: {
+    //   scales: {
+    //     y: {
+    //       beginAtZero: true
+    //     }
+    //   }
+    //   }
+    // })
   }
 }
 </script>
@@ -130,7 +228,7 @@ export default {
   <div>
     <h1>pooab</h1>
     <h1>{{ text }}</h1>
-    <input v-model="text" placeholder="YYYY/MM" />
+    <input id="poop" v-model="text" placeholder="YYYY/MM" @keydown="onKeyDown" />
     <canvas id="myChart"></canvas>
   </div>
   <div v-for="data in covidData" :key="data">
