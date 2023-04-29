@@ -8,7 +8,7 @@ import { RouterLink, RouterView } from "vue-router";
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Covid Cases</RouterLink>
-        <RouterLink to="/about">Covid Deaths</RouterLink>
+        <!-- <RouterLink to="/about">Covid Deaths</RouterLink> -->
       </nav>
     </div>
   </header>
