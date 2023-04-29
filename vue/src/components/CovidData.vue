@@ -29,11 +29,13 @@ export default {
       console.log(`Month: ${input}`);
 
       let data = await api();
+
       let a = data
         .filter((e) => e.date_of_interest.includes(input))
         .map((e) => {
-          return e.date_of_interest;
+          return e.date_of_interest.slice(0, 10);
         });
+
       let b = data
         .filter((e) => e.date_of_interest.includes(input))
         .map((e) => {
