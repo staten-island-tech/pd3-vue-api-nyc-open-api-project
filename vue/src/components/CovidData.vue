@@ -17,14 +17,17 @@ export default {
     enter: async function (e) {
       e.preventDefault();
       let chart = document.getElementById("case-chart");
+      let chart2 = document.getElementById("case-chart2");
       chart.remove();
+      chart2.remove();
       document.querySelector(".chart").innerHTML = "";
+      document.querySelector(".chart2").innerHTML = "";
       document
         .querySelector(".chart")
-        .insertAdjacentHTML(
-          "beforebegin",
-          `<canvas id="case-chart" style="width: 500vw; height: 350vh"></canvas>`
-        );
+        .insertAdjacentHTML("afterbegin", `<canvas id="case-chart"></canvas>`);
+      document
+        .querySelector(".chart2")
+        .insertAdjacentHTML("afterbegin", `<canvas id="case-chart2"></canvas>`);
       let input = document.querySelector(".input").value;
       console.log(`Month: ${input}`);
 
@@ -179,10 +182,10 @@ export default {
 
 <style scoped>
 .chart {
-  width: 1500px;
+  width: 100%;
   margin-bottom: 5rem;
 }
 .chart2 {
-  width: 600px;
+  width: 40%;
 }
 </style>
