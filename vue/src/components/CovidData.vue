@@ -1,6 +1,27 @@
+<template>
+  <div class="row">
+    <form id="form">
+      <input
+        type="text"
+        name="search"
+        class="input"
+        placeholder="2020-03 to 2022-11"
+      />
+      <input @click="enter" type="submit" value="Search" class="button" />
+    </form>
+    <button class="bar"></button>
+  </div>
+
+  <div class="chart">
+    <canvas id="case-chart"></canvas>
+  </div>
+  <div class="chart2">
+    <canvas id="case-chart2"></canvas>
+  </div>
+</template>
+
 <script>
 import Chart from "chart.js/auto";
-// import { ref } from "vue";
 
 async function api() {
   let res = await fetch(
@@ -12,7 +33,6 @@ async function api() {
 
 export default {
   name: "CovidCaseCount",
-  props: {},
   methods: {
     enter: async function (e) {
       e.preventDefault();
@@ -157,28 +177,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="row">
-    <form id="form">
-      <input
-        type="text"
-        name="search"
-        class="input"
-        placeholder="2020-03 to 2022-11"
-      />
-      <input @click="enter" type="submit" value="Search" class="button" />
-    </form>
-    <button class="bar"></button>
-  </div>
-
-  <div class="chart">
-    <canvas id="case-chart"></canvas>
-  </div>
-  <div class="chart2">
-    <canvas id="case-chart2"></canvas>
-  </div>
-</template>
 
 <style scoped>
 .chart {
