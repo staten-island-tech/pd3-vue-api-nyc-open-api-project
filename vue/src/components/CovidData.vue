@@ -9,7 +9,6 @@
       />
       <input @click="enter" type="submit" value="Search" class="button" />
     </form>
-    <button class="bar"></button>
   </div>
 
   <div class="chart">
