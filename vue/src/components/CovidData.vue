@@ -163,7 +163,7 @@ export default {
       });
 
       new Chart(document.getElementById("case-chart2"), {
-        type: "polarArea",
+        type: "doughnut",
         data: {
           labels: ["Bronx", "Brooklyn", "Manhattan", "Queens", "Staten Island"],
           datasets: [
