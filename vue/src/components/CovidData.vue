@@ -2,12 +2,12 @@
   <div class="row">
     <form id="form">
       <input
+        class="input"
         type="text"
         name="search"
-        class="input"
         placeholder="2020-03 to 2022-11"
       />
-      <input @click="enter" type="submit" value="Search" class="button" />
+      <input class="button" @click="enter" type="submit" value="Search" />
     </form>
   </div>
 
@@ -184,5 +184,61 @@ export default {
 }
 .chart2 {
   width: 40%;
+}
+
+.input {
+  height: 2.25rem;
+  border-radius: 6px;
+  margin-right: 0.2rem;
+}
+
+.button {
+  appearance: none;
+  background-color: #fafbfc;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+.button:hover {
+  background-color: #f3f4f6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+.button:disabled {
+  background-color: #fafbfc;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959da5;
+  cursor: default;
+}
+.button:active {
+  background-color: #edeff2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+.button:focus {
+  outline: 1px transparent;
+}
+.button:before {
+  display: none;
 }
 </style>
