@@ -15,7 +15,7 @@ export default {
       text: this.value
     }
   },
-  name: 'LineChart',
+  name: 'HelloWorld',
   props: {
     msg: String
   },
@@ -95,7 +95,8 @@ export default {
     },
     onKeyDown() {
       return this.text
-    }
+    },
+    async getData() {}
   },
   watch: {
     text() {

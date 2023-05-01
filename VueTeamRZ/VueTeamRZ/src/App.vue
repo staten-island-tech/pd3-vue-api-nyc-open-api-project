@@ -1,26 +1,23 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'
+import HomeView from './views/HomeView.vue'
 </script>
 
 <template>
+  <HomeView />
   <header>
     <div class="wrapper">
-      <nav>
-        <div><RouterLink to="/">Home</RouterLink></div>
+      <HelloWorld msg="You did it!" />
 
-        <RouterLink to="/LineChart"
-          >Line Chart<img src="https://cdn-icons-png.flaticon.com/512/1270/1270360.png" alt="Line"
-        /></RouterLink>
-        <RouterLink to="/LineChart"
-          >Pie Chart<img
-            src="https://cdn-icons-png.flaticon.com/512/3723/3723476.png"
-            alt="Doughnut"
-        /></RouterLink>
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
-
-    <RouterView></RouterView>
   </header>
+
+  <RouterView />
 </template>
 
 <style scoped>
@@ -33,13 +30,9 @@ header {
   display: block;
   margin: 0 auto 2rem;
 }
-img {
-  width: 200px;
-}
 
 nav {
   width: 100%;
-  height: 100vh;
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
