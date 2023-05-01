@@ -8,8 +8,14 @@ import { RouterLink, RouterView } from 'vue-router'
       <nav>
         <div><RouterLink to="/">Home</RouterLink></div>
 
-        <RouterLink to="/LineChart">Line Chart</RouterLink>
-        <RouterLink to="/LineChart">Pie Chart</RouterLink>
+        <RouterLink to="/LineChart"
+          >Line Chart<img src="https://cdn-icons-png.flaticon.com/512/1270/1270360.png" alt="Line"
+        /></RouterLink>
+        <RouterLink to="/LineChart"
+          >Pie Chart<img
+            src="https://cdn-icons-png.flaticon.com/512/3723/3723476.png"
+            alt="Doughnut"
+        /></RouterLink>
       </nav>
     </div>
 
