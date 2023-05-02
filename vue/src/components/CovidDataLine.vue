@@ -7,7 +7,6 @@ async function covidAPI() {
   covidDataRef.value = await response.json()
   return covidDataRef.value
 }
-let covidData = await covidAPI()
 
 export default {
   data() {
@@ -21,7 +20,8 @@ export default {
   },
 
   methods: {
-    renderChart() {
+    async renderChart() {
+      let covidData = await covidAPI()
       let n = this.text
 
       let SiDeath = []
