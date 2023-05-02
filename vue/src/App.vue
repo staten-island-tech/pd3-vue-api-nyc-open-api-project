@@ -1,32 +1,22 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
+import { RouterLink, RouterView } from 'vue-router'
 //import HelloWorld from "./components/HelloWorld.vue";
-
 </script>
 
 <template>
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Covid Cases</RouterLink>
+        <RouterLink to="/PieChart">Covid Cases</RouterLink>
+
+        <RouterLink to="/LineChart">Line Chart</RouterLink>
+
         <!-- <RouterLink to="/about">Covid Deaths</RouterLink> -->
       </nav>
     </div>
   </header>
 
-  <RouterView />
-        <div>
-          <nav><RouterLink to="/">Home</RouterLink>
-
-        <RouterLink to="/LineChart"
-          >Line Chart</RouterLink>
-        <RouterLink to="/LineChart"
-          >Pie Chart</RouterLink>
-      </nav>
-    </div>
-
-    <RouterView></RouterView>
-  </header>
+  <RouterView></RouterView>
 </template>
 
 <style scoped>

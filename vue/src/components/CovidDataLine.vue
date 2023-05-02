@@ -129,6 +129,9 @@ h3 {
   font-size: 1.2rem;
 }
 
+canvas {
+  width: 80vw;
+}
 .greetings h1,
 .greetings h3 {
   text-align: center;
