@@ -1,5 +1,6 @@
 <script setup>
-import CovidCaseCount from "../components/CovidData.vue";
+import CovidCaseCount from '../components/CovidData.vue'
+import CovidDataLine from '../components/CovidDataLine.vue'
 </script>
 
 <template>
@@ -8,4 +9,12 @@ import CovidCaseCount from "../components/CovidData.vue";
   </main>
 </template>
 
-<style scoped></style>
+<template>
+  <main></main>
+</template>
+
+<style>
+img {
+  width: 200px;
+}
+</style>
