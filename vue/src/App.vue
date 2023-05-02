@@ -7,9 +7,9 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/PieChart">Covid Cases</RouterLink>
+        <RouterLink to="/">Covid Cases</RouterLink>
 
-        <RouterLink to="/LineChart">Line Chart</RouterLink>
+        <RouterLink to="/LineChart">Covid Deaths</RouterLink>
 
         <!-- <RouterLink to="/about">Covid Deaths</RouterLink> -->
       </nav>
@@ -20,11 +20,6 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
 .logo {
   display: block;
   margin: 0 auto 2rem;
@@ -35,7 +30,6 @@ img {
 
 nav {
   width: 100%;
-  height: 100vh;
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;

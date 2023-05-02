@@ -172,7 +172,7 @@ export default {
 
 <style scoped>
 .chart {
-  width: 40vw%;
+  width: 40vw;
   margin-bottom: 5rem;
 }
 .chart2 {

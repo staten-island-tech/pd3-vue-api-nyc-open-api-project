@@ -112,10 +112,8 @@ export default {
 </script>
 
 <template>
-  <div>
-    <input v-model="text" placeholder="YYYY-MM" @click="onKeyDown" />
-    <canvas id="myChart"></canvas>
-  </div>
+  <input v-model="text" placeholder="YYYY-MM" @click="onKeyDown" />
+  <div><canvas id="myChart"></canvas></div>
 </template>
 
 <style scoped>
