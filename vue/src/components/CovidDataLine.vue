@@ -112,7 +112,7 @@ export default {
 </script>
 
 <template>
-  <input v-model="text" placeholder="YYYY-MM" @click="onKeyDown" />
+  <input class="search" v-model="text" placeholder="2020-03 to 2022-11" @click="onKeyDown" />
   <div><canvas id="myChart"></canvas></div>
 </template>
 
@@ -143,5 +143,10 @@ canvas {
   .greetings h3 {
     text-align: left;
   }
+}
+.search {
+  height: 2.25rem;
+  border-radius: 6px;
+  margin-right: 0.2rem;
 }
 </style>
