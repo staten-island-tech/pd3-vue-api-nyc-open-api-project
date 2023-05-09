@@ -105,9 +105,7 @@ export default {
 
       console.log(this.text)
     }
-  },
-
-  mounted() {}
+  }
 }
 </script>
 
@@ -130,20 +128,11 @@ h3 {
 canvas {
   width: 80vw;
 }
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
 
 #myChart {
   height: 80vh;
 }
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
+
 .search {
   height: 2.25rem;
   border-radius: 6px;
